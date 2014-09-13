@@ -1,3 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
 html, body {
-  margin: 20px;
+  margin: auto;
+  width: 60em;
+  font-variant: small-caps;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  background-color: black;
+  color: white;
+}
+
+header a {
+  margin: 10px 20px;
+}
+
+main img {
+  width: 100%;
+}
+
+section.about {
+  text-align: center;
+}
+
+address a {
+  display: block;
+}
+
+footer {
+  text-align: right;
+}
+
+footer a img {
+  width: 25px;
+  height: 25px;
+}
+
+img.white {
+  background-color: black;
+  border-radius: 3px;
+  padding: 3px;
 }

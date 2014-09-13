@@ -1,3 +1,28 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+<header>
+  <h1>exit<small>philadelphia</small></h1>
+  <nav>
+    {{#link-to "index"}}about{{/link-to}}
+    <a href="/media">media</a>
+    <a href="/shop">shop</a>
+    <a href="/events">events</a>
+    <a href="/contact">contact</a>
+  </nav>
+</header>
 
-{{outlet}}
+<main>
+  {{outlet}}
+</main>
+
+<footer>
+  <nav>
+    <a href="https://instagram.com/exitphiladelphia">
+      <img src="/instagram.jpg" alt="Instagram">
+    </a>
+    <a href="https://twitter.com/exitphiladelphia">
+      <img class="white" src="/twitter.png" alt="Twitter">
+    </a>
+    <a href="https://www.facebook.com/ExitSkateshop">
+      <img class="white" src="/facebook.png" alt="Facebook">
+    </a>
+  </nav>
+</footer>

@@ -15,6 +15,7 @@ ember build
 
 CURRENT_DIRECTORY=$PWD
 DEPLOY_DIRECTORY="$PWD-deploy"
+COMMIT_MESSAGE=$(git log -1 --pretty=%B)
 
 if ! [ -d $DEPLOY_DIRECTORY ]; then
   log "Cloning deployment copy..."
@@ -34,7 +35,7 @@ rm -rf $DEPLOY_DIRECTORY/test*
 
 log "Committing..."
 git add -A
-git commit -am "Deployed @ $(date)"
+git commit -am "$COMMIT_MESSAGE"
 log "Pushing..."
 git push origin gh-pages
 
