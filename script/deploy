@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#
+# Deploy build
+
+log() {
+  echo
+  echo "---------- $@"
+  echo
+}
+
+echo "Deploying $(git rev-parse HEAD) to gh-pages"
+echo
+
+ember build
+
+CURRENT_DIRECTORY=$PWD
+DEPLOY_DIRECTORY="$PWD-deploy"
+
+if ! [ -d $DEPLOY_DIRECTORY ]; then
+  log "Cloning deployment copy..."
+  git clone git@github.com:seanpdoyle/exitphiladelphia.com.git $DEPLOY_DIRECTORY
+  log "Cloned to $DEPLOY_DIRECTORY"
+fi
+
+cd $DEPLOY_DIRECTORY
+git checkout gh-pages
+
+log "Clearing out old files..."
+rm -rf *
+
+log "Copying new files..."
+mv $CURRENT_DIRECTORY/dist/* $DEPLOY_DIRECTORY
+rm -rf $DEPLOY_DIRECTORY/test*
+
+log "Committing..."
+git add -A
+git commit -am "Deployed @ $(date)"
+log "Pushing..."
+git push origin gh-pages
+
+log "Deploy complete!"
